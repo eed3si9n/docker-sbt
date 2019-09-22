@@ -1,12 +1,12 @@
 # https://hub.docker.com/r/adoptopenjdk/openjdk8
-FROM adoptopenjdk/openjdk8:jdk8u202-b08-alpine
+FROM adoptopenjdk/openjdk8:jdk8u222-b10-alpine
 
 LABEL maintainer="eed3si9n@gmail.com"
 
 RUN set -x \
   && apk --update add --no-cache --virtual .build-deps curl \
-  && SBT_VER="1.2.8" \
-  && ESUM="9bb9212541176d6fcce7bd12e4cf8a9c9649f5b63f88b3aff474e0b02c7cfe58" \
+  && SBT_VER="1.3.0" \
+  && ESUM="c9bc6bcbbe7a65773f4526ad5613d93f220ce21bd2456c3cf35363c4cdd52648" \
   && SBT_URL="https://piccolo.link/sbt-${SBT_VER}.tgz" \
   && apk add shadow \
   && apk add bash \
