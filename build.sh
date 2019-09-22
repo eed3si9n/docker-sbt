@@ -24,21 +24,19 @@ docker version
 
 sbt_version_u="${sbt_version//./_}"
 
-echo sbt $sbt_version_u
-
 mustache data.yml jdk11/alpine/Dockerfile.mustache > jdk11/alpine/Dockerfile
 mustache data.yml jdk8/alpine/Dockerfile.mustache > jdk8/alpine/Dockerfile
 
-docker build jdk11/alpine -t sbt:jdk11-alpine -t "sbt:sbt${sbt_version_u}-jdk11-alpine"
-docker build jdk8/alpine  -t sbt:jdk8-alpine  -t "sbt:sbt${sbt_version_u}-jdk8-alpine"
+docker build jdk11/alpine -t sbt:jdk11-alpine -t "sbt:sbt${sbt_version}-jdk11-alpine"
+docker build jdk8/alpine  -t sbt:jdk8-alpine  -t "sbt:sbt${sbt_version}-jdk8-alpine"
 
-docker tag "sbt:sbt${sbt_version_u}-jdk11-alpine" "eed3si9n/sbt:sbt${sbt_version_u}-jdk11-alpine"
-docker push                                       "eed3si9n/sbt:sbt${sbt_version_u}-jdk11-alpine"
-docker tag "sbt:sbt${sbt_version_u}-jdk11-alpine" "eed3si9n/sbt:jdk11-alpine"
-docker push                                       "eed3si9n/sbt:jdk11-alpine"
-docker tag "sbt:sbt${sbt_version_u}-jdk8-alpine"  "eed3si9n/sbt:sbt${sbt_version_u}-jdk8-alpine"
-docker push                                       "eed3si9n/sbt:sbt${sbt_version_u}-jdk8-alpine"
-docker tag "sbt:sbt${sbt_version_u}-jdk8-alpine"  "eed3si9n/sbt:jdk8-alpine"
-docker push                                       "eed3si9n/sbt:jdk8-alpine"
-docker tag "sbt:sbt${sbt_version_u}-jdk8-alpine"  "eed3si9n/sbt:latest"
-docker push                                       "eed3si9n/sbt:latest"
+docker tag "sbt:sbt${sbt_version}-jdk11-alpine" "eed3si9n/sbt:sbt${sbt_version}-jdk11-alpine"
+docker push                                     "eed3si9n/sbt:sbt${sbt_version}-jdk11-alpine"
+docker tag "sbt:sbt${sbt_version}-jdk11-alpine" "eed3si9n/sbt:jdk11-alpine"
+docker push                                     "eed3si9n/sbt:jdk11-alpine"
+docker tag "sbt:sbt${sbt_version}-jdk8-alpine"  "eed3si9n/sbt:sbt${sbt_version}-jdk8-alpine"
+docker push                                     "eed3si9n/sbt:sbt${sbt_version}-jdk8-alpine"
+docker tag "sbt:sbt${sbt_version}-jdk8-alpine"  "eed3si9n/sbt:jdk8-alpine"
+docker push                                     "eed3si9n/sbt:jdk8-alpine"
+docker tag "sbt:sbt${sbt_version}-jdk8-alpine"  "eed3si9n/sbt:latest"
+docker push                                     "eed3si9n/sbt:latest"
