@@ -5,8 +5,8 @@ LABEL maintainer="eed3si9n@gmail.com"
 
 RUN set -x \
   && apk --update add --no-cache --virtual .build-deps curl \
-  && SBT_VER="1.3.0" \
-  && ESUM="c9bc6bcbbe7a65773f4526ad5613d93f220ce21bd2456c3cf35363c4cdd52648" \
+  && SBT_VER="1.3.2" \
+  && ESUM="ed8cef399129895ad0d757eea812b3f95830a36fa838f8ede1c6cdc2294f326f" \
   && SBT_URL="https://piccolo.link/sbt-${SBT_VER}.tgz" \
   && apk add shadow \
   && apk add bash \
