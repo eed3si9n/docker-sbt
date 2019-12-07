@@ -1,12 +1,12 @@
 # https://hub.docker.com/r/adoptopenjdk/openjdk11
-FROM adoptopenjdk/openjdk11:jdk-11.0.4_11-alpine
+FROM adoptopenjdk/openjdk11:jdk-11.0.5_10-alpine
 
 LABEL maintainer="eed3si9n@gmail.com"
 
 RUN set -x \
   && apk --update add --no-cache --virtual .build-deps curl \
-  && SBT_VER="1.3.2" \
-  && ESUM="ed8cef399129895ad0d757eea812b3f95830a36fa838f8ede1c6cdc2294f326f" \
+  && SBT_VER="1.3.4" \
+  && ESUM="55cc71e4f21f2dde9ba928b6c76f12016443505b32d0c47b19adf3288f94e62f" \
   && SBT_URL="https://piccolo.link/sbt-${SBT_VER}.tgz" \
   && apk add shadow \
   && apk add bash \
