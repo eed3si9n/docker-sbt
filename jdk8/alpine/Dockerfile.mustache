@@ -22,12 +22,9 @@ RUN set -x \
   && apk del --purge .build-deps \
   && rm -rf /tmp/sbt-${SBT_VER}.tgz /var/cache/apk/*
 
-RUN id -u demiourgos1 2> /dev/null || useradd --system --create-home --uid 1001 --gid 0 demiourgos1
-
 WORKDIR /opt/workspace
-RUN chown -R 1001:0 /opt/workspace
 
-USER 1001
+ENTRYPOINT /bin/bash
 
 ENV PATH="/opt/sbt/sbt/bin:$PATH" \
     JAVA_OPTS="-XX:+UseContainerSupport -Dfile.encoding=UTF-8" \
