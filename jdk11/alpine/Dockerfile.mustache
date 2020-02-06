@@ -24,7 +24,7 @@ RUN set -x \
 
 WORKDIR /opt/workspace
 
-ENTRYPOINT /bin/bash
+ENTRYPOINT ["sbt"]
 
 ENV PATH="/opt/sbt/sbt/bin:$PATH" \
     JAVA_OPTS="-XX:+UseContainerSupport -Dfile.encoding=UTF-8" \
