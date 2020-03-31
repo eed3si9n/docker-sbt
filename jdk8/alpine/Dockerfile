@@ -1,12 +1,12 @@
 # https://hub.docker.com/r/adoptopenjdk/openjdk8
-FROM adoptopenjdk/openjdk8:jdk8u232-b09-alpine
+FROM adoptopenjdk/openjdk8:jdk8u242-b08-alpine
 
 LABEL maintainer="eed3si9n@gmail.com"
 
 RUN set -x \
   && apk --update add --no-cache --virtual .build-deps curl \
-  && SBT_VER="1.3.8" \
-  && ESUM="27b2ed49758011fefc1bd05e1f4156544d60673e082277186fdd33b6f55d995d" \
+  && SBT_VER="1.3.9" \
+  && ESUM="ecd4e9b23a07d739065ecc2e00d040063a156131cbc9a9c0e9d8ca57966f641a" \
   && SBT_URL="https://piccolo.link/sbt-${SBT_VER}.tgz" \
   && apk add shadow \
   && apk add bash \
@@ -30,4 +30,14 @@ ENV PATH="/opt/sbt/sbt/bin:$PATH" \
     JAVA_OPTS="-XX:+UseContainerSupport -Dfile.encoding=UTF-8" \
     SBT_OPTS="-Xmx2048M -Xss2M"
 
-RUN sbt about
+RUN set -x \
+  && echo "ThisBuild / scalaVersion := \"2.13.1\"" >> build.sbt \
+  && mkdir -p project \
+  && echo "sbt.version=1.3.9" >> project/build.properties \
+  && echo "object Test" >> Test.scala \
+  && sbt compile \
+  && sbt compile \
+  && rm Test.scala \
+  && rm -rf project \
+  && rm -rf target \
+  && rm build.sbt
