@@ -16,7 +16,13 @@ For AdoptOpenJDK JDK 8
 
 ```
 docker pull eed3si9n/sbt
-docker run -it --mount src="$(pwd)",target=/opt/workspace,type=bind eed3si9n/sbt
+docker run -it --mount src="$(pwd)",target=/opt/workspace,type=bind eed3si9n/sbt:jdk8-alpine
+```
+
+To use `/bin/bash` as the entry point (for `console` task etc):
+
+```
+docker run --entrypoint "/bin/bash" -it --mount src="$(pwd)",target=/opt/workspace,type=bind eed3si9n/sbt:jdk8-alpine
 ```
 
 For AdoptOpenJDK JDK 11
