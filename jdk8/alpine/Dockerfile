@@ -5,8 +5,8 @@ LABEL maintainer="eed3si9n@gmail.com"
 
 RUN set -x \
   && apk --update add --no-cache --virtual .build-deps curl \
-  && SBT_VER="1.3.9" \
-  && ESUM="ecd4e9b23a07d739065ecc2e00d040063a156131cbc9a9c0e9d8ca57966f641a" \
+  && SBT_VER="1.4.1" \
+  && ESUM="6316ccf218ca2c2e19816f1caf0fd9a30fd27d2599b14655356320f6a963f494" \
   && SBT_URL="https://piccolo.link/sbt-${SBT_VER}.tgz" \
   && apk add shadow \
   && apk add bash \
@@ -33,7 +33,7 @@ ENV PATH="/opt/sbt/sbt/bin:$PATH" \
 RUN set -x \
   && echo "ThisBuild / scalaVersion := \"2.13.1\"" >> build.sbt \
   && mkdir -p project \
-  && echo "sbt.version=1.3.9" >> project/build.properties \
+  && echo "sbt.version=1.4.1" >> project/build.properties \
   && echo "object Test" >> Test.scala \
   && sbt compile \
   && sbt compile \
