@@ -1,5 +1,5 @@
 # https://hub.docker.com/r/adoptopenjdk/openjdk11
-FROM adoptopenjdk/openjdk11:jdk-11.0.6_10-alpine
+FROM adoptopenjdk/openjdk11:jdk-11.0.16_8-alpine
 
 LABEL maintainer="eed3si9n@gmail.com"
 
