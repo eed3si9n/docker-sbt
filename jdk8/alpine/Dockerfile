@@ -5,9 +5,9 @@ LABEL maintainer="eed3si9n@gmail.com"
 
 RUN set -x \
   && apk --update add --no-cache --virtual .build-deps curl \
-  && SBT_VER="1.4.1" \
-  && ESUM="6316ccf218ca2c2e19816f1caf0fd9a30fd27d2599b14655356320f6a963f494" \
-  && SBT_URL="https://piccolo.link/sbt-${SBT_VER}.tgz" \
+  && SBT_VER="1.7.1" \
+  && ESUM="8a183afdb3519290dde2f8c81c9b2bad19ddd78735ef311fb5fb9bdcf68d3fe4" \
+  && SBT_URL="https://github.com/sbt/sbt/releases/download/v${SBT_VER}/sbt-${SBT_VER}.tgz" \
   && apk add shadow \
   && apk add bash \
   && apk add openssh \
@@ -31,9 +31,9 @@ ENV PATH="/opt/sbt/sbt/bin:$PATH" \
     SBT_OPTS="-Xmx2048M -Xss2M"
 
 RUN set -x \
-  && echo "ThisBuild / scalaVersion := \"2.13.1\"" >> build.sbt \
+  && echo "ThisBuild / scalaVersion := \"2.13.8\"" >> build.sbt \
   && mkdir -p project \
-  && echo "sbt.version=1.4.1" >> project/build.properties \
+  && echo "sbt.version=1.7.1" >> project/build.properties \
   && echo "object Test" >> Test.scala \
   && sbt compile \
   && sbt compile \
